@@ -93,7 +93,7 @@ function deleteProduct(index) {
 
 document.getElementById("addProductBtn").addEventListener("click", () => {
     const role = localStorage.getItem("rememberedRole")
-    if(role === "admin"){
+    if(role === "admin" || role === "editor"){
         window.location.href = "create-product.html";
     }else{
         alert("Only administrators have access to this page");
