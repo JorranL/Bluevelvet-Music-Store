@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 window.localStorage.setItem("rememberedRole", userFound.role);
                 window.localStorage.setItem("rememberedName", userFound.name);
                 alert(`Welcome, ${userFound.name}!`);
-                if (["admin", "editor", "salesperson", "shippper"].includes(userFound.role)) {
+                if (["admin", "editor", "salesperson", "shipper"].includes(userFound.role)) {
                     location.href = "dashboard.html";
                 } else {
                     alert("Unauthorized role.");
