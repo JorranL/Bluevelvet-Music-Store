@@ -77,7 +77,9 @@ function changePage(pageNumber) {
 }
 
 function deleteProduct(index) {
-    const confirmation = confirm("Are you sure you want to delete this product?");
+    const role = localStorage.getItem("rememberedRole")
+    if(role === "admin" || role === "editor"){
+        const confirmation = confirm("Are you sure you want to delete this product?");
     if (confirmation) {
         let storedProducts = JSON.parse(localStorage.getItem("products")) || [];
         storedProducts.splice(index, 1);
@@ -89,6 +91,10 @@ function deleteProduct(index) {
         }
         initializeProducts();
     }
+    }else{
+        alert("Only administrators or editors have access to this function");
+    }
+    
 }
 
 document.getElementById("addProductBtn").addEventListener("click", () => {
@@ -96,7 +102,7 @@ document.getElementById("addProductBtn").addEventListener("click", () => {
     if(role === "admin" || role === "editor"){
         window.location.href = "create-product.html";
     }else{
-        alert("Only administrators have access to this page");
+        alert("Only administrators or editors have access to this page");
     }
 });
 
@@ -119,7 +125,13 @@ document.getElementById("resetProductsBtn").addEventListener("click", () => {
 });
 
 function editProduct(productId) {
-    window.location.href = `edit-product.html?productId=${productId}`;
+    const role = localStorage.getItem("rememberedRole")
+    if(role === "admin" || role === "editor"){
+        window.location.href = `edit-product.html?productId=${productId}`;
+    }else{
+        alert("Only administrators or editors have access to this page");
+    }
+
 }
 
 document.addEventListener('DOMContentLoaded', () => {
