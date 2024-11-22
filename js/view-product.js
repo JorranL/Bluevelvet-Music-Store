@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const listItem = document.createElement('li');
 
             if (typeof detail === 'object') {
-                listItem.textContent = detail.info || Object.values(detail).join(', ');
+                listItem.textContent = detail.info || Object.values(detail).join(': ');
             } else {
                 listItem.textContent = detail;
             }
